@@ -1,0 +1,13 @@
+table {
+    width: 100%;
+}
+
+.full-width {
+    font-size: 14px;
+    width: 100%;
+}
+
+@import "~@ng-select/ng-select/themes/default.theme.css";
+body {
+  padding: 20px;
+}

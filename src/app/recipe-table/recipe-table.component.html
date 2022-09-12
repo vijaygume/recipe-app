@@ -1,0 +1,35 @@
+<p>Recipe Table</p>
+<div>
+<button (click)="getAllRecipes()" class="btn btn-primary btn-block btn-lg">Get All Recipes</button>
+</div>
+<div>
+
+ <table class='table'>
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Link</th>
+        <th>Ingredients</th>
+        <th>Thumbnail</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let repo of recipeData;">
+        <td>{{repo.title}}</td>
+        <td>{{repo.href}}</td>
+        <td>{{repo.ingredients}}</td>
+        <td>{{repo.thumbnail}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div>
+    <label>Select Ingredients</label>
+        <ng-select [items]="ingredients"
+        (change)="getRecipesByIngredients()"
+                   [multiple]="true"
+                   placeholder="Select Ingredients"
+                   [(ngModel)]="selected">
+        </ng-select>
+</div>

@@ -1,0 +1,74 @@
+<p>Log Table</p>
+
+<div>
+    <label>Select Log Level</label>
+    <ng-select [items]="levels"
+    (change)="getLogContentByLevels()"
+               [multiple]="true"
+               placeholder="Select level"
+               [(ngModel)]="selected">
+    </ng-select></div>
+    
+
+    <div class="container">
+        <div class="row custom-wrapper">
+            <div class="col-md-12">
+    
+                <!-- Form starts -->
+                <form #myForm="ngForm" (submit)="submitForm(myForm)" novalidate>
+                    <!-- Gender -->
+                    <div class="group-gap">
+                        <h5 class="mb-3">Level Type</h5>
+                        <div class="d-block my-3">
+    
+                            <div class="custom-control custom-radio">
+                                <input id="info" type="radio" class="custom-control-input" value="INFO" name="level" ngModel required>
+                  <label class="custom-control-label" for="INFO">INFO</label>
+                </div>
+    
+                <div class="custom-control custom-radio">
+                  <input id="error" type="radio" class="custom-control-input" value="ERROR" name="level" ngModel required>
+                  <label class="custom-control-label" for="ERROR">ERROR</label>
+                </div>
+
+                <div class="custom-control custom-radio">
+                    <input id="warn" type="radio" class="custom-control-input" value="WARN" name="level" ngModel required>
+                    <label class="custom-control-label" for="WARN">WARN</label>
+                  </div>
+                  <div class="custom-control custom-radio">
+                    <input id="debug" type="radio" class="custom-control-input" value="DEBUG" name="level" ngModel required>
+                    <label class="custom-control-label" for="DEBUG">DEBUG</label>
+                  </div>
+    
+                <div class="invalid-feedback" *ngIf="isSubmitted && myForm.invalid">
+                  <p>Please select either value</p>
+                </div>
+              </div>
+            </div>
+    
+              <!-- Submit Button -->
+              <button type="submit" class="btn btn-danger btn-lg btn-block">Find Logs</button>
+          </form><!-- Form ends -->
+    
+        </div>
+      </div>
+    </div>
+
+<div>
+<table class='table'>
+    <thead>
+      <tr>
+        <th>Level</th>
+        <th>Message</th>
+        <th>Occurence</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let repo of logData;">
+        <td>{{repo.level}}</td>
+        <td>{{repo.message}}</td>
+        <td>{{repo.occurrenceCount}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
